@@ -1,0 +1,134 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: Roboto, Arial;
+        background-image: url('../images/bg.jpg');
+        background-repeat: repeat;
+        background-size: cover;
+    /* color: white; */
+    /* background-color: rgba(210, 5, 5, 0.227); */
+}
+
+.navbar{
+    height: 150px;
+    /* background-color: lightgray; */
+    display: flex;
+}
+
+.logo{
+    flex: 1;
+    margin-right: 200px;
+    /* margin-left: 20px; */
+}
+
+.logo img{
+    height: 150px;
+    cursor: pointer;
+}
+
+.nav-right-section{
+    /* background-color: aqua; */
+    flex: 2;
+    margin-right: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-right-section div{
+    font-size: 24px;
+    font-weight: 700;
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+.nav-right-section div:hover{
+    background-color: rgb(255, 154, 154);
+}
+
+.nav-right-section a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.main-section{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main-left-section,
+.main-right-section{
+    flex: 1;
+    font-size: 40px;
+    text-align: center;
+    font-style: oblique;
+    line-height: 60px;
+    margin: 100px 20px 20px 20px;
+    border-radius: 20px;
+    text-shadow: 2px 2px black;
+    transition: background-color 0.5s, transform 0.5s;
+}
+
+.main-left-section:hover,
+.main-right-section:hover{
+    background-color: rgb(255, 154, 154);
+    transform: scale(1.1)
+}
+
+.main-middle-section{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: lightblue; */
+}
+
+.main-middle-section button{
+    font-size: 40px;
+    text-shadow: 4px 4px 4px rgb(0, 0, 0);
+    margin-left: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px 40px;
+    cursor: pointer;
+    /* opacity: 0.9; */
+    transition: background-color 0.5s, transform 0.5s, color 0.5s;
+}
+
+.main-middle-section button:hover{
+    background-color: red;
+    transform: scale(1.2); 
+    color: white;
+}
+
+.welcome-text{
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    text-shadow: 4px 4px 4px #fff200
+}
+
+.register-button{
+    margin-bottom: 20px;
+}
+
+.or{
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+}
+
+.login-button{
+    margin-top: 20px;
+}
+
+.main-right-section{
+    margin-right: 20px;
+}

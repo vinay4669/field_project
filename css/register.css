@@ -1,0 +1,88 @@
+.register{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    /* border: 2px solid red; */
+}
+
+.width{
+    margin-bottom: 150px;
+}
+
+.heading{
+    font-size: 32px;
+    /* font-style: italic; */
+    margin-top: 20px;
+    text-shadow: 2px 2px 2px #0d00ff
+}
+
+.form{
+    /* border: 2px solid red; */
+    height: 600px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    row-gap: 20px;
+}
+
+.name-label,
+.mail-label,
+.phone-label,
+.city-label,
+.blood-group-label,
+.user-label,
+.pass-label{
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+input{
+    width: 400px;
+    height: 30px;
+    font-size: 20px;
+    padding: 10px;
+    opacity: 0.4;
+    border-radius: 5px;
+    border: none;
+    transition: opacity 0.5s;
+}
+
+input:focus{
+    opacity: 1;
+}
+
+
+/* input: {
+    box-shadow: inset 5px 5px 5px 5px red;
+} */
+
+select{
+    width: 400px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+.submit-button input{
+    height: 40px;
+    width: 100px;
+    border: none;
+}
+
+.submit{
+    color: white;
+    background-color: black;
+    opacity: 1;
+    cursor: pointer;
+    transition: box-shadow .15s;
+}
+
+.submit:hover{
+    box-shadow: 5px 5px 5px black;
+}

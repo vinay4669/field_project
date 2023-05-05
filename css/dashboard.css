@@ -1,0 +1,118 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    color: rgb(0, 0, 0);
+    display: grid;
+    grid-template-rows: 60px 1fr;
+}
+
+header{
+    background-color: #525252;
+    display: flex;
+    align-items: center;
+}
+
+.heading{
+    color: whitesmoke;
+    font-size: 24px;
+    margin-left: 24px;
+    text-shadow: 2px 2px black;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.sidebar{
+    background-color: rgb(0, 108, 144);
+    height: 500px;
+}
+
+.sidebar-links{
+    /* margin-top: 40px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-links button{
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+    height: 60px;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    line-height: 55px;
+    transition: background-color .3s;
+}
+
+.sidebar-links button:hover{
+    background-color: rgb(255, 145, 11);
+}
+
+.profile{
+    /* background-color: #ccc; */
+    margin-top: 5%;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.profile div h1{
+    font-size: 40px;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    margin: 10px;
+}
+
+td{
+    padding: 5px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.right{
+    text-align: right;
+}
+
+
+
+.logout{
+    margin-top: 15%;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+}
+
+.message{
+    font-size: 50px;
+    text-shadow: 2px 2px 2px rgb(255, 0, 0);
+}
+
+button{
+    height: 50px;
+    width: 130px;
+    font-size: 20px;
+    color: white;
+    background-color: black;
+    border: none;
+    opacity: 1;
+    cursor: pointer;
+    transition: box-shadow .15s;
+}
+
+button:hover{
+    box-shadow: 5px 5px 5px black;
+}
+
+.button button{
+    border-radius: 5px;
+}
+
+.button button:hover{
+    box-shadow: 2px 2px  black;
+}

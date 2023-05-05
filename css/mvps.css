@@ -1,0 +1,24 @@
+.mvps{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 20px;
+}
+
+table{
+    width: max-content;
+}
+
+th, td{
+    padding: 5px;
+}
+
+th{
+    font-size: 26px;
+}
+
+td{
+    font-size: 20px;
+}
