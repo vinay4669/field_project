@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/home-page.css">
     <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/mvps.css">
 </head>
 <body>
