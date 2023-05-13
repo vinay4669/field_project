@@ -3,8 +3,14 @@
 $servername = "localhost";
 $username = "root";
 $password = "HR-6819!m";
-$database = "blood";
 
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($servername, $username, $password);
 
+$sql = "SHOW DATABASES LIKE 'blood'";
+if($conn->query($sql)->num_rows != 0){
+    $conn->select_db('blood');
+}
+else{
+    echo "not exists";
+}
 ?>

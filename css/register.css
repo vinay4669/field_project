@@ -1,3 +1,7 @@
+body{
+    color: white;
+}
+
 .register{
     display: flex;
     flex-direction: column;

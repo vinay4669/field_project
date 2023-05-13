@@ -6,23 +6,18 @@ include("conn.php");
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $user = $_POST["user"];
     $pass = $_POST["pass"];
-    $sql = "SELECT user, pass FROM user_data";
+    $sql = "SELECT id, pass FROM admin_data";
     $result = $conn->query($sql);
     $b = TRUE;
     while($row = $result->fetch_assoc()){
-        if($row["user"] == $user){
+        if($row["id"] == $user){
             if($row["pass"] == $pass){
-                // session_id('login');
-                session_start();
-                // $_SESSION["user"] = $user;
-                $lat = $_SESSION['lat'];
-                $lng = $_SESSION['lng'];
-                header("Location: dashboard.php?user=$user&lat=$lat&lng=$lng");
+                header("Location: a_dashboard.php");
             }
             else{
                 echo "<script>
             if(confirm('Wrong Password. Please try again.')) {
-              window.location.href = 'login.php';
+              window.location.href = 'a_login.php';
             }
           </script>";
             }
@@ -32,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if($b){
         echo "<script>
             if(confirm('$user username does not exists. Please try again.')) {
-              window.location.href = 'login.php';
+              window.location.href = 'a_login.php';
             }
           </script>";
     }
@@ -50,7 +45,7 @@ background-image: url('../images/bguc.png');
 
     <main class="register">
         <div class="heading">
-            Enter your login credentials
+            Enter your login credentials (ADMIN)
         </div>
         <div >
             <form method="post" class="form login-form">

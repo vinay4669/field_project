@@ -49,6 +49,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
 </style>
 
+<link rel="stylesheet" href="css/register.css">
+
 <body style="
 background-image: url('../images/bguc.png');
         background-repeat: repeat;
