@@ -1,103 +1,31 @@
-var b1 = document.getElementById("profile-button");
-var b2 = document.getElementById("donate-button");
-var b3 = document.getElementById("request-button");
-var b4 = document.getElementById("history-button");
-var b5 = document.getElementById("edit-button");
-var b6 = document.getElementById("logout-button");
+// Get all the buttons with class sidebar-button
+var sidebarButtons = document.querySelectorAll('.sidebar-button');
+// console.log("Dynamic working")
+// add EventListener to all the buttons
+sidebarButtons.forEach(function(button){
+    button.addEventListener('click', function(){
+        
+        // setting the color of the rest of the buttons as default i.e. transparent
+        sidebarButtons.forEach(function(button){
+            button.style = "background-color: transparent";
+        });
+        
+        // setting a special color to the clicked button
+        this.style = "background-color: rgb(255, 155, 11)";
+        
+        // get target content ID i.e. id of the content that corresponds to the click of that particular button
+        var targetId = this.dataset.contentTarget;
 
-var c1 = document.getElementById("profile");
-var c2 = document.getElementById("donate");
-var c3 = document.getElementById("request");
-var c4 = document.getElementById("history");
-var c5 = document.getElementById("edit");
-var c6 = document.getElementById("logout");
+        // to hide rest of the content items
+        var contentItems = document.querySelectorAll('.content-item');
+        contentItems.forEach(function(item){
+            item.style.display = 'none';
+        });
 
-b1.addEventListener("click", function(){
-    c1.style.display = "flex";
-    c2.style.display = "none";
-    c3.style.display = "none";
-    c4.style.display = "none";
-    c5.style.display = "none";
-    c6.style.display = "none";
-    b1.style = "background-color: rgb(255, 155, 11);;";
-    b2.style = "background-color: transparent;";
-    b3.style = "background-color: transparent;";
-    b4.style = "background-color: transparent;";
-    b5.style = "background-color: transparent;";
-    b6.style = "background-color: transparent;";
+        // to show the content item whose button iś clicked
+        var targetItem = document.getElementById(targetId);
+        targetItem.style.display = 'flex';
+
+    });
 });
 
-b2.addEventListener("click", function(){
-    c1.style.display = "none";
-    c2.style.display = "block";
-    c3.style.display = "none";
-    c4.style.display = "none";
-    c5.style.display = "none";
-    c6.style.display = "none";
-    b1.style = "background-color: transparent;";
-    b2.style = "background-color: rgb(255, 145, 11);;";
-    b3.style = "background-color: transparent;";
-    b4.style = "background-color: transparent;";
-    b5.style = "background-color: transparent;";
-    b6.style = "background-color: transparent;";
-})
-
-b3.addEventListener("click", function(){
-    c1.style.display = "none";
-    c2.style.display = "none";
-    c3.style.display = "block";
-    c4.style.display = "none";
-    c5.style.display = "none";
-    c6.style.display = "none";
-    b1.style = "background-color: transparent;";
-    b2.style = "background-color: transparent;";
-    b3.style = "background-color: rgb(255, 145, 11);";
-    b4.style = "background-color: transparent;";
-    b5.style = "background-color: transparent;";
-    b6.style = "background-color: transparent;";
-})
-
-b4.addEventListener("click", function(){
-    c1.style.display = "none";
-    c2.style.display = "none";
-    c3.style.display = "none";
-    c4.style.display = "block";
-    c5.style.display = "none";
-    c6.style.display = "none";
-    b1.style = "background-color: transparent;";
-    b2.style = "background-color: transparent;";
-    b3.style = "background-color: transparent;";
-    b4.style = "background-color: rgb(255, 145, 11);";
-    b5.style = "background-color: transparent;";
-    b6.style = "background-color: transparent;";
-})
-
-b5.addEventListener("click", function(){
-    c1.style.display = "none";
-    c2.style.display = "none";
-    c3.style.display = "none";
-    c4.style.display = "none";
-    c5.style.display = "flex";
-    c6.style.display = "none";
-    b1.style = "background-color: transparent;";
-    b2.style = "background-color: transparent;";
-    b3.style = "background-color: transparent;";
-    b4.style = "background-color: transparent";
-    b5.style = "background-color: rgb(255, 145, 11);";
-    b6.style = "background-color: transparent";
-})
-
-b6.addEventListener("click", function(){
-    c1.style.display = "none";
-    c2.style.display = "none";
-    c3.style.display = "none";
-    c4.style.display = "none";
-    c5.style.display = "none";
-    c6.style.display = "flex";
-    b1.style = "background-color: transparent;";
-    b2.style = "background-color: transparent;";
-    b3.style = "background-color: transparent;";
-    b4.style = "background-color: transparent";
-    b5.style = "background-color: transparent;";
-    b6.style = "background-color: rgb(255, 145, 11)";
-})

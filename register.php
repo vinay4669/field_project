@@ -81,14 +81,14 @@ background-image: url('../images/bguc.png');
                 <div class="blood-group-input">
                     <div class="blood-group-label">Blood Group</div>
                     <select name="bg" id="bg" required>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
+                        <option value="ap">A+</option>
+                        <option value="an">A-</option>
+                        <option value="bp">B+</option>
+                        <option value="bn">B-</option>
+                        <option value="abp">AB+</option>
+                        <option value="abn">AB-</option>
+                        <option value="op">O+</option>
+                        <option value="on">O-</option>
                     </select>
                 </div>
                 <div class="user-input">

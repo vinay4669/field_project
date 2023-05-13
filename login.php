@@ -1,3 +1,5 @@
+<script src="js/location.js"></script>
+
 <?php
 include("header.php");
 include("conn.php");
@@ -10,9 +12,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     while($row = $result->fetch_assoc()){
         if($row["user"] == $user){
             if($row["pass"] == $pass){
+                // session_id('login');
                 session_start();
-                $_SESSION["user"] = $user;
-                header("Location: dashboard.php");
+                // $_SESSION["user"] = $user;
+                $lat = $_SESSION['lat'];
+                $lng = $_SESSION['lng'];
+                header("Location: dashboard.php?user=$user&lat=$lat&lng=$lng");
             }
             else{
                 echo "<script>
