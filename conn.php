@@ -10,7 +10,4 @@ $sql = "SHOW DATABASES LIKE 'blood'";
 if($conn->query($sql)->num_rows != 0){
     $conn->select_db('blood');
 }
-else{
-    echo "not exists";
-}
 ?>

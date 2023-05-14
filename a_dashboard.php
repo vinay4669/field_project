@@ -43,6 +43,49 @@ while($row = $res->fetch_assoc()){
 }
 ?>
 
+<!-- camps -->
+
+<?php
+$sql = "SELECT name, address, phone, mail FROM blood_camps";
+$res = $conn->query($sql);
+$c_info = array();
+while($row = $res->fetch_assoc()){
+    $c_info[] = array('name'=>$row['name'], 'address'=>$row['address'], 'phone'=>$row['phone'], 'mail'=>$row['mail']);
+}
+?>
+
+<!-- add-camps -->
+
+<?php
+if(isset($_POST['submit1'])){
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $mail = $_POST['mail'];
+    $lat = $_POST['lat'];
+    $lng = $_POST['lng'];
+    $sql = "INSERT INTO blood_camps(name, address, phone, mail, location) VALUES('$name', '$address', '$phone', '$mail', ST_GeomFromText('POINT($lat $lng)'))";
+    $conn->query($sql);
+    $sql = "SELECT * FROM blood_camps ORDER BY id DESC LIMIT 1";
+    $row = $conn->query($sql)->fetch_assoc();
+    $camp_id = $row['id'];
+    $sql = "INSERT INTO blood_data(camp_id, ap, an, bp, bn, abp, abn, op, one) VALUES('$camp_id', 0, 0, 0, 0, 0, 0, 0, 0)";
+    $conn->query($sql);
+    echo "<script>alert('Blood Camp Added')</script>";
+}
+?>
+
+<!-- add-admin -->
+
+<?php
+if(isset($_POST['submit2'])){
+    $id = $_POST['id'];
+    $pass = $_POST['pass'];
+    $sql = "INSERT INTO admin_data(id, pass) VALUES('$id', '$pass')";
+    $conn->query($sql);
+    echo "<script>alert('New Admin profile created')</script>";
+}
+?>
 
 
 <!DOCTYPE html>
@@ -71,7 +114,7 @@ while($row = $res->fetch_assoc()){
                 <button class="sidebar-button" data-content-target="camps">&#x2022; Blood Camps</button>
                 <button class="sidebar-button" data-content-target="add-camps">&#x2022; Add Blood Camps</button>
                 <button class="sidebar-button" data-content-target="add-admin">&#x2022; Add Admin</button>
-                <button class="sidebar-button" data-content-target="logout">&#x2022; Logout</button>
+                <button class="sidebar-button" data-open-modal>&#x2022; Logout</button>
             </div>
         </div>
 
@@ -79,7 +122,7 @@ while($row = $res->fetch_assoc()){
             <div class="donate content-item" id="donate" style="display: none">
                 <table class="donate-table">
                     <tr>
-                        <th>Sr.No.</th>
+                        <th>S.No.</th>
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Blood Camp</th>
@@ -113,7 +156,7 @@ while($row = $res->fetch_assoc()){
             <div class="request content-item" id="request"style="display: none">
             <table class="request-table">
                     <tr>
-                        <th>Sr.No.</th>
+                        <th>S.No.</th>
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Blood Camp</th>
@@ -140,65 +183,131 @@ while($row = $res->fetch_assoc()){
                         $k++;    
                     }
                     if(empty($r_info)){
-                        echo "<tr><td colspan=7>No pending requests!</td></tr>";
+                        echo "<tr><td colspan=8>No pending requests!</td></tr>";
                     }
                     ?>
                 </table>
             </div>
 
             <div class="camps content-item" id="camps"style="display: none">
-                camps
+                <table class="camps-table">
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>E-Mail</th>
+                    </tr>
+                    <?php
+                        $k = 1;
+                        foreach($c_info as $i){
+                            ?>
+                            <tr>
+                                <td><?php echo $k; ?></td>
+                                <td><?php echo $i['name']; ?></td>
+                                <td><?php echo $i['address']; ?></td>
+                                <td><?php echo $i['phone']; ?></td>
+                                <td><?php echo $i['mail']; ?></td>
+                            </tr>
+                        <?php
+                        $k++;    
+                    }
+                    ?>
+                </table>
             </div>
 
             <div class="add-camps content-item" id="add-camps"style="display: none">
-                add-camps
+                <div class="heading-text">
+                    Enter blood camp details
+                </div>
+                <div class="camp-form">
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <label for="name">Name: </label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address: </label>
+                            <input type="text" name="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone: </label>
+                            <input type="text" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mail">E-Mail: </label>
+                            <input type="text" name="mail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lat">Latitude: </label>
+                            <input type="text" name="lat" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lng">Longitude: </label>
+                            <input type="text" name="lng" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit1">
+                        </div>
+                    </form>
+                </div>
             </div>
 
             <div class="add-admin content-item" id="add-admin"style="display: none">
-                add-admin
+            <div class="heading-text">
+                    Create new admin profile
+                </div>
+                <div class="admin-form">
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <label for="id">Admin ID: </label>
+                            <input type="text" name="id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Password: </label>
+                            <input type="text" name="pass" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit2">
+                        </div>
+                    </form>
+                </div>
             </div>
 
             <div class="logout content-item" id="logout"style="display: none">
-                logout
+
             </div>
         </div>
     </main>
 
+    <dialog data-modal>
+        <div class="modal-content">
+            <div class="modal-heading">
+                ARE YOU SURE?
+            </div>
+            <div class="buttons">
+                <a href="index.php"><button id="yes">YES</button></a>
+                <button data-close-modal id="no">NO</button>
+            </div>
+            
+        </div>
+    </dialog>
+
 </body>
+
 <script>
-    const dapp = document.querySelectorAll('.dapp')
-    const drej = document.querySelectorAll('.drej')
-    const rapp = document.querySelectorAll('.rapp')
-    const rrej = document.querySelectorAll('.rrej')
-
-    dapp.forEach(function(button){
-        button.addEventListener('click', ()=>{
-            var a = button.value
-            window.location.href="judge.php?type=donate&res=1&dt="+a
-        })
+    const modal =document.querySelector("[data-modal]")
+    const openbutton =document.querySelector("[data-open-modal]")
+    const closebutton =document.querySelector("[data-close-modal]")
+    
+    openbutton.addEventListener('click', ()=>{
+        modal.showModal()
     })
-
-    drej.forEach(function(button){
-        button.addEventListener('click', ()=>{
-            var a = button.value
-            window.location.href="judge.php?type=donate&res=-1&dt="+a
-        })
+    closebutton.addEventListener('click',() =>{
+        modal.close()
     })
-
-    rapp.forEach(function(button){
-        button.addEventListener('click', ()=>{
-            var a = button.value
-            window.location.href="judge.php?type=request&res=1&dt="+a
-        })
-    })
-
-    rrej.forEach(function(button){
-        button.addEventListener('click', ()=>{
-            var a = button.value
-            window.location.href="judge.php?type=request&res=-1&dt="+a
-        })
-    })
-
 </script>
+
+<script src="js/a_response.js"></script>
 <script src="js/dynamic.js"></script>
 </html>

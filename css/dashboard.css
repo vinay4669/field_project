@@ -35,7 +35,7 @@ main{
 }
 
 .sidebar{
-    background-color: rgb(0, 108, 144);
+    background-color: rgb(255, 0, 0);
     height: 100%;
 }
 
@@ -59,7 +59,7 @@ main{
 }
 
 .sidebar-links button:hover{
-    background-color: rgb(255, 145, 11);
+    background-color: rgb(245, 145, 11);
 }
 
 .profile{

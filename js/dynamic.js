@@ -11,7 +11,7 @@ sidebarButtons.forEach(function(button){
         });
         
         // setting a special color to the clicked button
-        this.style = "background-color: rgb(255, 155, 11)";
+        this.style = "background-color: whitesmoke; color:black";
         
         // get target content ID i.e. id of the content that corresponds to the click of that particular button
         var targetId = this.dataset.contentTarget;
