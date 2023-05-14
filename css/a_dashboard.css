@@ -72,3 +72,36 @@ main{
 .sidebar-button:hover{
     box-shadow: 5px 5px 5px black;
 }
+
+.donate-table,
+.request-table{
+    border: 2px solid red;
+    margin-inline: auto;
+    margin-top: 100px;
+    font-size: 36px;
+}
+
+.donate-table td,
+.request-table td{
+    border: 2px dotted red;
+}
+
+td, th{
+    padding: 15px;
+}
+
+.judge{
+    border: none;
+    font-size: 24px;
+    padding: inherit;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.approve{
+    background-color: rgb(120, 200, 1);
+}
+
+.reject{
+    background-color: red;
+}

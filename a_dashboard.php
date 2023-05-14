@@ -5,11 +5,13 @@ include("conn.php");
 <!-- donate -->
 
 <?php
-
 $sql = "SELECT user_id FROM donate WHERE status=0";
 $users = $conn->query($sql)->fetch_all();
 $sql = "SELECT camp_id FROM donate WHERE status=0";
 $camps = $conn->query($sql)->fetch_all();
+$sql = "SELECT date_time FROM donate WHERE status=0";
+$sql = "SELECT DATE_FORMAT(date_time, '%Y-%m-%d %H:%i:%s') FROM donate WHERE status=0";
+$dt = $conn->query($sql)->fetch_all();
 $d_info = array();
 $bg = array('ap'=>'A+', 'an'=>'A-', 'bp'=>'B+', 'bn'=>'B-', 'abp'=>'AB+', 'abn'=>'AB-', 'op'=>'O+', 'one'=>'O-');
 $l = count($camps);
@@ -20,9 +22,27 @@ for($i = 0;$i<$l;$i++){
     $k = $camps[$i];
     $sql = "SELECT name FROM blood_camps WHERE id='$k[0]'";
     $temp2 = $conn->query($sql)->fetch_assoc();
-    $d_info[] = array('name'=>$temp['name'], 'phone'=>$temp['phone'], 'bc'=>$temp2['name'], 'bg'=>$bg[$temp['bg']]);
+    $k = $dt[$i][0];
+    // $k = '1';
+    $d_info[] = array('name'=>$temp['name'], 'phone'=>$temp['phone'], 'bc'=>$temp2['name'], 'bg'=>$bg[$temp['bg']], 'dt'=>"$k");
 }
 ?>
+
+<!-- request -->
+
+<?php
+$sql = "SELECT * FROM request WHERE status=0";
+$res = $conn->query($sql);
+$r_info = array();
+while($row = $res->fetch_assoc()){
+    $sql = "SELECT name, phone FROM user_data WHERE user='$row[user_id]'";
+    $temp = $conn->query($sql)->fetch_assoc();
+    $sql = "SELECT name FROM blood_camps WHERE id='$row[camp_id]'";
+    $temp2 = $conn->query($sql)->fetch_assoc();
+    $r_info[] = array('name'=>$temp['name'], 'phone'=>$temp['phone'], 'bc'=>$temp2['name'], 'bg'=>$bg[$row['bg']], 'dt'=>$row['date_time'], 'amt'=>$row['amt']);
+}
+?>
+
 
 
 <!DOCTYPE html>
@@ -57,7 +77,7 @@ for($i = 0;$i<$l;$i++){
 
         <div class="content">
             <div class="donate content-item" id="donate" style="display: none">
-                <table class="donate-table" border="2">
+                <table class="donate-table">
                     <tr>
                         <th>Sr.No.</th>
                         <th>Name</th>
@@ -68,13 +88,62 @@ for($i = 0;$i<$l;$i++){
                         <th></th>
                     </tr>
                     <?php
-
+                        $k = 1;
+                        foreach($d_info as $i){
+                            ?>
+                            <tr>
+                                <td><?php echo $k; ?></td>
+                                <td><?php echo $i['name']; ?></td>
+                                <td><?php echo $i['phone']; ?></td>
+                                <td><?php echo $i['bc']; ?></td>
+                                <td><?php echo $i['bg']; ?></td>
+                                <td><button class="judge approve dapp" value="<?php echo $i['dt']; ?>">Approve</button></td>
+                                <td><button class="judge reject drej" value="<?php echo $i['dt']; ?>">Reject</button></td>
+                            </tr>
+                        <?php
+                        $k++;    
+                    }
+                    if(empty($d_info)){
+                        echo "<tr><td colspan=7>No pending requests!</td></tr>";
+                    }
                     ?>
                 </table>
             </div>
 
             <div class="request content-item" id="request"style="display: none">
-                request
+            <table class="request-table">
+                    <tr>
+                        <th>Sr.No.</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Blood Camp</th>
+                        <th>Blood Group</th>
+                        <th>Amount</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <?php
+                        $k = 1;
+                        foreach($r_info as $i){
+                            ?>
+                            <tr>
+                                <td><?php echo $k; ?></td>
+                                <td><?php echo $i['name']; ?></td>
+                                <td><?php echo $i['phone']; ?></td>
+                                <td><?php echo $i['bc']; ?></td>
+                                <td><?php echo $i['bg']; ?></td>
+                                <td><?php echo $i['amt']; ?></td>
+                                <td><button class="judge approve rapp" value="<?php echo $i['dt'].'|'.$i['amt']; ?>">Approve</button></td>
+                                <td><button class="judge reject rrej" value="<?php echo $i['dt']; ?>">Reject</button></td>
+                            </tr>
+                        <?php
+                        $k++;    
+                    }
+                    if(empty($r_info)){
+                        echo "<tr><td colspan=7>No pending requests!</td></tr>";
+                    }
+                    ?>
+                </table>
             </div>
 
             <div class="camps content-item" id="camps"style="display: none">
@@ -96,5 +165,40 @@ for($i = 0;$i<$l;$i++){
     </main>
 
 </body>
+<script>
+    const dapp = document.querySelectorAll('.dapp')
+    const drej = document.querySelectorAll('.drej')
+    const rapp = document.querySelectorAll('.rapp')
+    const rrej = document.querySelectorAll('.rrej')
+
+    dapp.forEach(function(button){
+        button.addEventListener('click', ()=>{
+            var a = button.value
+            window.location.href="judge.php?type=donate&res=1&dt="+a
+        })
+    })
+
+    drej.forEach(function(button){
+        button.addEventListener('click', ()=>{
+            var a = button.value
+            window.location.href="judge.php?type=donate&res=-1&dt="+a
+        })
+    })
+
+    rapp.forEach(function(button){
+        button.addEventListener('click', ()=>{
+            var a = button.value
+            window.location.href="judge.php?type=request&res=1&dt="+a
+        })
+    })
+
+    rrej.forEach(function(button){
+        button.addEventListener('click', ()=>{
+            var a = button.value
+            window.location.href="judge.php?type=request&res=-1&dt="+a
+        })
+    })
+
+</script>
 <script src="js/dynamic.js"></script>
 </html>
