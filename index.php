@@ -23,3 +23,20 @@ include("header.php");
     </main>
 
     
+<footer class="footer">
+    <div class="heading">
+        JOIN OUR CAUSE
+    </div>
+    <div class="content">
+        Donating blood or platelets can be intimidating and even scary. 
+        Time to put those hesitations and fears aside. Learn from Little Blood  
+        how simple and easy it is to roll up a sleeve and help save lives.
+    </div>
+    <!-- <div class="links">
+
+    </div> -->
+    <div class="foot">
+        2023 &copy; All rights reserved.
+    </div>
+    
+</footer>

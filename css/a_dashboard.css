@@ -26,7 +26,7 @@ header{
 main{
     height: 200%;
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 300px 1fr;
 }
 
 .sidebar{
@@ -72,6 +72,14 @@ main{
 .sidebar-button:hover{
     box-shadow: 5px 5px 5px black;
 }
+
+.logo{
+    max-width: 55%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
 
 .donate-table,
 .request-table{

@@ -119,6 +119,9 @@ if(isset($_POST['submit2'])){
         </div>
 
         <div class="content">
+            <div class="content-item welcome-content">
+                <img src="images/littile-help-logo.jpg" alt="logo" class="logo">
+            </div> 
             <div class="donate content-item" id="donate" style="display: none">
                 <table class="donate-table">
                     <tr>
@@ -153,7 +156,7 @@ if(isset($_POST['submit2'])){
                 </table>
             </div>
 
-            <div class="request content-item" id="request"style="display: none">
+            <div class="request content-item" id="request" style="display: none">
             <table class="request-table">
                     <tr>
                         <th>S.No.</th>
@@ -189,7 +192,7 @@ if(isset($_POST['submit2'])){
                 </table>
             </div>
 
-            <div class="camps content-item" id="camps"style="display: none">
+            <div class="camps content-item" id="camps" style="display: none">
                 <table class="camps-table">
                     <tr>
                         <th>S.No.</th>
@@ -216,7 +219,7 @@ if(isset($_POST['submit2'])){
                 </table>
             </div>
 
-            <div class="add-camps content-item" id="add-camps"style="display: none">
+            <div class="add-camps content-item" id="add-camps" style="display: none">
                 <div class="heading-text">
                     Enter blood camp details
                 </div>
@@ -253,7 +256,7 @@ if(isset($_POST['submit2'])){
                 </div>
             </div>
 
-            <div class="add-admin content-item" id="add-admin"style="display: none">
+            <div class="add-admin content-item" id="add-admin" style="display: none">
             <div class="heading-text">
                     Create new admin profile
                 </div>
@@ -274,7 +277,7 @@ if(isset($_POST['submit2'])){
                 </div>
             </div>
 
-            <div class="logout content-item" id="logout"style="display: none">
+            <div class="logout content-item" id="logout" style="display: none">
 
             </div>
         </div>

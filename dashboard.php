@@ -7,6 +7,11 @@ $lng = $_GET['lng'];
 // echo $lat;
 $sql = "SELECT * FROM user_data WHERE user = '$user'";
 $data = $conn->query($sql)->fetch_assoc();
+$bg = array('ap'=>'A+', 'an'=>'A-', 'bp'=>'B+', 'bn'=>'B-', 'abp'=>'AB+', 'abn'=>'AB-', 'op'=>'O+', 'one'=>'O-');
+$data['bg'] = $bg[$data['bg']];
+
+
+// donate
 
 if(isset($_POST["submit1"])){
     // echo $_POST['blood_camp'];
@@ -17,6 +22,8 @@ if(isset($_POST["submit1"])){
         echo "<script>alert('Your response has been recorded. We thank you for your generosity!')</script>";
     }
 }
+
+// request
 
 if(isset($_POST["submit2"])){
     $bg = $_POST['bg'];
@@ -124,14 +131,17 @@ if(isset($_POST["submit2"])){
                 <button class="sidebar-button" data-content-target="profile">&#x2022; My Profile</button>
                 <button class="sidebar-button" data-content-target="donate">&#x2022; Donate</button>
                 <button class="sidebar-button" data-content-target="request">&#x2022; Request</button>
-                <button class="sidebar-button" data-content-target="history">&#x2022; My History</button>
-                <button class="sidebar-button" data-content-target="edit">&#x2022; Edit Profile</button>
+                <!-- <button class="sidebar-button" data-content-target="history">&#x2022; My History</button>
+                <button class="sidebar-button" data-content-target="edit">&#x2022; Edit Profile</button> -->
                 <button class="sidebar-button" data-content-target="logout">&#x2022; Logout</button>
             </div>
         </div>
 
 
-        <div class="content">   
+        <div class="content"> 
+            <div class="content-item welcome-content">
+                <img src="images/littile-help-logo.jpg" alt="logo" class="logo">
+            </div>  
             <div class="profile content-item" id="profile" style="display:none">
                 <div><h1>PROFILE</h1></div>
                 <div class="table">
@@ -211,7 +221,7 @@ if(isset($_POST["submit2"])){
 
 
             <div class="history content-item" id="history" style="display:none">
-                <h2>History of all the donations and requests made</h2>
+                
             </div>
 
 

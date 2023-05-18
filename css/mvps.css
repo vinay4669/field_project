@@ -1,24 +1,26 @@
 .mvps{
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    row-gap: 20px;
+    /* justify-content: center; */
 }
 
-table{
-    width: max-content;
+.mvps .heading{
+    font-size: 36px;
+    font-weight: 700;
+    margin: 20px;
 }
 
-th, td{
-    padding: 5px;
+.mvps-table{
+    border: 2px solid red;
+    margin-inline: auto;
+    font-size: 28px;
 }
 
-th{
-    font-size: 26px;
+.mvps-table td{
+    border: 2px dotted red;
 }
 
-td{
-    font-size: 20px;
+td, th{
+    padding: 15px;
 }

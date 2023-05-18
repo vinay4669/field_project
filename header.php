@@ -19,16 +19,19 @@
         </div>
         <div class="nav-right-section">
             <div class="home-button"> 
-                <a href="index.php">HOME</a> 
+                <a href="index.php"><button>HOME</button></a> 
             </div>
             <div class="mvps-button">
-                <a href="mvps.php">MVPs</a> 
+                <a href="mvps.php"><button>MVPs</button></a> 
             </div>
             <div class="about-us-button">
-                <a href="#">ABOUT US</a> 
+                <a href="about_us.php"><button>ABOUT US</button></a> 
             </div>
-            <div class="get-help-button">
-                <a href="#">GET HELP</a> 
+            <!-- <div class="get-help-button">
+                <a href="contact_us.php"><button>CONTACT US</button></a> 
+            </div> -->
+            <div class="admin-login-button">
+                <a href="a_login.php"><button>Admin page</button></a> 
             </div>
         </div>
     </nav>

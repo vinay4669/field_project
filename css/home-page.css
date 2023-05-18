@@ -9,6 +9,9 @@ body{
         background-image: url('../images/bg.jpg');
         background-repeat: repeat;
         background-size: cover;
+        min-height: 100vh;
+        display: grid;
+  grid-template-rows: 150px 1fr auto;
     /* color: white; */
     /* background-color: rgba(210, 5, 5, 0.227); */
 }
@@ -39,20 +42,26 @@ body{
     align-items: center;
 }
 
-.nav-right-section div{
+.nav-right-section a{
+    color: black;
+}
+
+.nav-right-section button{
     font-size: 24px;
     font-weight: 700;
-    padding: 20px;
+    padding: 15px 25px;
     border-radius: 5px;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
     transition: background-color .3s;
 }
 
-.nav-right-section div:hover{
-    background-color: rgb(255, 154, 154);
+.nav-right-section button:hover{
+    background-color: rgb(255, 75, 75);
 }
 
-.nav-right-section a{
+.nav-right-section button{
     color: inherit;
     text-decoration: none;
 }
@@ -132,4 +141,29 @@ body{
 
 .main-right-section{
     margin-right: 20px;
+}
+
+.footer{
+    height: 200px;
+    background-color: rgba(17, 17, 17, 0.9);
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer .heading{
+    font-size: 36px;
+    padding: 10px;
+}
+
+.footer .content{
+    font-size: 24px;
+    padding: 10px;
+    line-height: 32px;
+    text-align: center;
+}
+
+.footer .foot{
+    padding: 10px;
 }

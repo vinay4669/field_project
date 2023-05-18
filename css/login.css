@@ -1,3 +1,7 @@
+.register{
+    justify-content: center;
+}
+
 .login-form{
     height: 200px;
 }
@@ -12,3 +16,4 @@ input{
     border: none;
     transition: opacity 0.5s;
 }
+

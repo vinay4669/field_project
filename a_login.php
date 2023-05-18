@@ -63,4 +63,9 @@ background-image: url('../images/bguc.png');
             </form>
         </div>
     </main>
+
+    <footer class="footer">
+        
+    </footer>
+
     </body>
