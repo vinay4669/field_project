@@ -106,6 +106,40 @@ if(isset($_POST["submit2"])){
 
 ?>
 
+<!-- history -->
+
+<?php
+$sql = "SELECT camp_id, date_time FROM donate WHERE user_id='$user' AND status=1";
+$res = $conn->query($sql);
+$d_history = array();
+while($row = $res->fetch_assoc()){
+    $camp_id = $row['camp_id'];
+    $a = explode(' ', $row['date_time']);
+    $date = $a[0];
+    $time = $a[1];
+    $sql = "SELECT name FROM blood_camps WHERE id='$camp_id'";
+    $camp = $conn->query($sql)->fetch_all()[0][0];
+    $d_history[] = array('camp'=>$camp, 'date'=>$date, 'time'=>$time);
+}
+?>
+
+<?php
+$sql = "SELECT camp_id, bg, amt, date_time FROM request WHERE user_id='$user' AND status=1";
+$res = $conn->query($sql);
+$r_history = array();
+while($row = $res->fetch_assoc()){
+    $camp_id = $row['camp_id'];
+    $a = explode(' ', $row['date_time']);
+    $date = $a[0];
+    $time = $a[1];
+    $sql = "SELECT name FROM blood_camps WHERE id='$camp_id'";
+    $camp = $conn->query($sql)->fetch_all()[0][0];
+    $r_history[] = array('camp'=>$camp, 'bg'=>$bg[$row['bg']], 'amt'=>$row['amt'], 'date'=>$date, 'time'=>$time);
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -131,8 +165,8 @@ if(isset($_POST["submit2"])){
                 <button class="sidebar-button" data-content-target="profile">&#x2022; My Profile</button>
                 <button class="sidebar-button" data-content-target="donate">&#x2022; Donate</button>
                 <button class="sidebar-button" data-content-target="request">&#x2022; Request</button>
-                <!-- <button class="sidebar-button" data-content-target="history">&#x2022; My History</button>
-                <button class="sidebar-button" data-content-target="edit">&#x2022; Edit Profile</button> -->
+                <button class="sidebar-button" data-content-target="history">&#x2022; My History</button>
+                <!-- <button class="sidebar-button" data-content-target="edit">&#x2022; Edit Profile</button> -->
                 <button class="sidebar-button" data-content-target="logout">&#x2022; Logout</button>
             </div>
         </div>
@@ -221,7 +255,67 @@ if(isset($_POST["submit2"])){
 
 
             <div class="history content-item" id="history" style="display:none">
-                
+                <div class="d_history">
+                <div class="heading2">BLOOD DONATIONS DONE</div>
+                    <table class="donate-table">
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Camp name</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                        </tr>
+                        <?php
+                            $k = 1;
+                            foreach($d_history as $i){
+                                ?>
+                                <tr>
+                                    <td><?php echo $k; ?></td>
+                                    <td><?php echo $i['camp']; ?></td>
+                                    <td><?php echo $i['date']; ?></td>
+                                    <td><?php echo $i['time']; ?></td>
+                                </tr>
+                            <?php
+                            $k++;    
+                        }
+                        if(empty($d_history)){
+                            echo "<tr><td colspan=4>No blood donations done YET!</td></tr>";
+                        }
+                        ?>
+                    </table>
+                </div>
+                <hr>
+                <div class="r_history">
+                    <div class="heading2">BLOOD REQUESTS DONE</div>
+                    <table class="request-table">
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Camp Name</th>
+                            <th>Blood Group</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                        </tr>
+                        <?php
+                            $k = 1;
+                            foreach($r_history as $i){
+                                ?>
+                                <tr>
+                                    <td><?php echo $k; ?></td>
+                                    <td><?php echo $i['camp']; ?></td>
+                                    <td><?php echo $i['bg']; ?></td>
+                                    <td><?php echo $i['amt']; ?></td>
+                                    <td><?php echo $i['date']; ?></td>
+                                    <td><?php echo $i['time']; ?></td>
+                                </tr>
+                            <?php
+                            $k++;    
+                        }
+                        if(empty($r_history)){
+                            echo "<tr><td colspan=6>No blood requests done YET!</td></tr>";
+                        }
+                        ?>
+                    </table>
+                </div>
             </div>
 
 

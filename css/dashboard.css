@@ -154,6 +154,46 @@ dialog{
     font-size: 20px;
 } */
 
+.history{
+    flex-direction: column;
+}
+
+.r_history,
+.d_history{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading2{
+    font-weight: 700;
+    font-size: 42px;
+    padding-top: 15px;
+    color: red;
+    text-shadow: 3px 3px 1px #525252;
+}
+
+.donate-table,
+.request-table{
+    border: 2px solid red;
+    margin-inline: auto;
+    margin-top: 20px;
+    font-size: 24px;
+    line-height: 2rem;
+    margin: 25px;
+}
+
+.donate-table td,
+.request-table td{
+    border: 2px dotted red;
+    font-weight: 500;
+}
+
+td, th{
+    padding: 15px;
+}
+
 .logout{
     margin-top: 15%;
     flex-direction: column;
