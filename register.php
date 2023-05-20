@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $_SESSION["user"] = $user;
         echo "<script>
         if(confirm('Congrats! You are registered. Press OK to continue.')) {
-          window.location.href = 'dashboard.php';
+          window.location.href = 'index.php';
         }
       </script>";     
     }

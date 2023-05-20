@@ -9,7 +9,16 @@ include("header.php");
   <link rel="stylesheet" type="text/css" href="css/about_us.css">
 </head>
 <body>
-    
+<div class="container">
+        <h1>About Us</h1>
+        <div class="content">
+          <p>We're glad you've decided to use our blood bank management system. Our objective is to ensure that hospitals, clinics, and patients always have access to a sufficient supply of safe and trustworthy blood and blood products.</p>
+          <h2>Our Mission</h2>
+          <p>Our mission is to save lives by providing a consistent supply of high-quality blood and blood products while maintaining the highest standards of safety and customer service.</p>
+          <h2>Our History</h2>
+          <p>We were founded in 2003 by a group of healthcare professionals who recognized the need for a centralized blood bank management system that could efficiently collect, test, and distribute blood products to healthcare providers throughout the region. Since then, we have grown to become the leading blood bank management system in our area, with a reputation for excellence in service and safety.</p>
+        </div>
+        </div>
 
         <div class="container">
             <h1>Our Team</h1>
@@ -26,16 +35,7 @@ include("header.php");
             </ul>
             </div>
             </div>
-      <div class="container">
-        <h1>About Us</h1>
-        <div class="content">
-          <p>We're glad you've decided to use our blood bank management system. Our objective is to ensure that hospitals, clinics, and patients always have access to a sufficient supply of safe and trustworthy blood and blood products.</p>
-          <h2>Our Mission</h2>
-          <p>Our mission is to save lives by providing a consistent supply of high-quality blood and blood products while maintaining the highest standards of safety and customer service.</p>
-          <h2>Our History</h2>
-          <p>We were founded in 2003 by a group of healthcare professionals who recognized the need for a centralized blood bank management system that could efficiently collect, test, and distribute blood products to healthcare providers throughout the region. Since then, we have grown to become the leading blood bank management system in our area, with a reputation for excellence in service and safety.</p>
-        </div>
-        </div>
+      
 
       <div class="container">
         <h1>Our Services And Programs</h1>

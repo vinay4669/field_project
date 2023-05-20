@@ -117,13 +117,14 @@ while($row = $res->fetch_assoc()){
     $a = explode(' ', $row['date_time']);
     $date = $a[0];
     $time = $a[1];
-    $sql = "SELECT name FROM blood_camps WHERE id='$camp_id'";
+    $sql = "SELECT name FROM blood_camps WHERE id=$camp_id";
     $camp = $conn->query($sql)->fetch_all()[0][0];
-    $d_history[] = array('camp'=>$camp, 'date'=>$date, 'time'=>$time);
+    $d_history[] = array('camp'=>$camp, 'date'=>$a[0], 'time'=>$a[1]);
 }
 ?>
 
 <?php
+$bg = array('ap'=>'A+', 'an'=>'A-', 'bp'=>'B+', 'bn'=>'B-', 'abp'=>'AB+', 'abn'=>'AB-', 'op'=>'O+', 'one'=>'O-');   
 $sql = "SELECT camp_id, bg, amt, date_time FROM request WHERE user_id='$user' AND status=1";
 $res = $conn->query($sql);
 $r_history = array();
@@ -132,9 +133,9 @@ while($row = $res->fetch_assoc()){
     $a = explode(' ', $row['date_time']);
     $date = $a[0];
     $time = $a[1];
-    $sql = "SELECT name FROM blood_camps WHERE id='$camp_id'";
+    $sql = "SELECT name FROM blood_camps WHERE id=$camp_id";
     $camp = $conn->query($sql)->fetch_all()[0][0];
-    $r_history[] = array('camp'=>$camp, 'bg'=>$bg[$row['bg']], 'amt'=>$row['amt'], 'date'=>$date, 'time'=>$time);
+    $r_history[] = array('camp'=>$camp, 'bg'=>$bg[$row['bg']],  'amt'=>$row['amt'], 'date'=>$a[0], 'time'=>$a[1]);
 }
 ?>
 
@@ -211,10 +212,11 @@ while($row = $res->fetch_assoc()){
                     }
                     else{
                         ?>
+                        
                         <form action="dashboard.php?user=<?php echo $user;?>&lat=<?php echo $lat ?>&lng=<?php echo $lng ?>" method="post" class="donate-form">
-                            <?php foreach($camps as $camp){ ?>
-                                <input type="radio" name="blood_camp" value="<?php echo $camp['id'] ?>" required>
-                                <?php echo $camp['name'].'  -  '.$camp['address'].'  -  '.$camp['phone'].'  -  '.$camp['mail'].'<br>'; ?>
+                            <?php foreach($camps as $i){ ?>
+                                <input type="radio" name="blood_camp" value="<?php echo $i['id'] ?>" required>
+                                <?php echo $i['name'].'  -  '.$i['address'].'  -  '.$i['phone'].'  -  '.$i['mail'].'<br>'; ?>
                             <?php } ?><br><br>
                             <input type="submit" name="submit1" class="submit">
                         </form>
