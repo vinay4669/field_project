@@ -201,7 +201,7 @@ while($row = $res->fetch_assoc()){
                 </div>
                 <div class="donate-form-section">
                 <?php
-                    $sql = "SELECT * FROM blood_camps WHERE ST_Distance_Sphere(location, POINT($lat, $lng)) < 10000";
+                    $sql = "SELECT * FROM blood_camps WHERE ST_Distance_Sphere(location, POINT($lat, $lng)) < 20000";
                     $result = $conn->query($sql);
                     $camps = array();
                     while($row = mysqli_fetch_assoc(($result))){
